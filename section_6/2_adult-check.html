@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lexend+Giga:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      font-family: "Lexend Giga", serif;
+      line-height: 1.5em;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 100vh;
+    }
+    .container {
+      text-align: center;
+    }
+    .login {
+      border: 1px solid coral;
+      border-radius: 10px;
+      padding: 2em;
+    }
+    .login input[type=text], .login button {
+      padding: 1em 2em;
+      outline: none;
+      border-radius: 10px;
+      border: 1px solid lightgray;
+    }
+    .login button {
+      cursor: pointer;
+      color: coral;
+    }
+    .login input[type=text] {
+      width: 26%;
+      border: 1px solid lightgray;
+    }
+  </style>
+
+  <title>Javascript If statement: Adult Check</title>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Javascript var, val(), if</h1>
+    <div class="login">
+      <h2>Adult Check with Jquery if statement</h2>
+      <input id="id" type="text" placeholder="Input your age in numbers">
+      <button>Check</button>
+    </div>
+  </div>
+
+  <script>
+    $('.login button').click(function() {
+      var num = $('#id').val();
+
+      if(num === '') { alert('Input your age.') }
+      else if (num < 18) { alert('You are NOT an adult.')}
+      else if (num >= 18) { alert('You are an adult.')}
+      else { alert('Input your age in numbers.') }
+    })
+  </script>
+</body>
+</html>

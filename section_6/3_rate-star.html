@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lexend+Giga:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      font-family: "Lexend Giga", serif;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .star-rating {
+      background-color: rgb(74, 74, 74);
+      width: 330px;
+      height: 20px;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+    }
+    .star-rating div {
+      float: left;
+    }
+    .stars {
+      width: 40%;
+    }
+    .starts .fa {
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .print {
+      width: 60%;
+      color: white;
+    }
+    
+    .stars .fa.active {
+      color: yellow;
+      text-shadow: 0 0 5px yellow;
+    }
+
+  </style>
+
+  <title>Javascript If statement: Rate with Stars</title>
+</head>
+<body>
+  
+  <div class="star-rating">
+    <div class="stars">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+    </div>
+    <div class="print">
+      Please rate me!
+    </div>
+  </div>
+
+  <div class="learning">
+    <p>prevAll() - to select all previous stars (add class)</p>
+    <p>nextAll() - to select all next stars (remove class)</p>
+    <p>index() - to find $(this)'s index</p>
+    <p>html() - html('>img src="example.png"<' + 'good')</p>
+  </div>
+
+  <script>
+    $('.stars .fa').click(function() {
+      $(this).addClass('active');
+      $(this).prevAll().addClass('active');
+      $(this).nextAll().removeClass('active');
+
+      var num = $(this).index();
+      var starRate = num + 1; // to get star's rating
+
+      if (starRate === 1) {$('.print').text("🤮 I hate it!")}
+      else if (starRate === 2) {$('.print').text("😣 I don't like it")}
+      else if (starRate === 3) {$('.print').text("🫤 It's okay")}
+      else if (starRate === 4) {$('.print').text("😃 It's good")}
+      else {$('.print').text("😍 I love it!")}
+    });
+  </script>
+
+</body>
+</html> 
