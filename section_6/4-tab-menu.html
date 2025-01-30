@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lexend+Giga:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      font-family: "Courier Prime", serif;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    p, ul, li {
+      padding: 0;
+      margin: 0.2em;
+    }
+
+    section {
+      width: 800px;
+    }
+    .tab-inner {
+      margin-top: 30px;
+    }
+    .btn {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      margin-left: 10px;
+    }
+    .btn li {
+      float: left;
+      width: 120px; 
+      text-align: center;
+      cursor: pointer;
+      background-color: #eee;
+      border-right: 1px solid #ddd;
+      padding: 5px;
+      border-top: 2px solid transparent;
+    }
+    .btn li:last-child {
+      width: 170px;
+      border-right: none;
+    }
+    .btn li:hover, .btn li.active {
+      background-color: white;
+      border-top: 2px solid crimson;
+    }
+    .tabs {}
+    .tabs div {
+      background: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      display: none;
+    }
+    .tabs div.active {
+      display: block;
+    }
+
+    /* Tab Content */
+    .tabs div h2 {
+      text-align: center;
+    }
+    .tabs div img {
+      float: left;
+    }
+    .tabs div p {
+      overflow: hidden;
+      /* 그림을 둘러 배치되는 텍스트 방지 */
+      padding-left: 15px;
+    }
+
+    /* HEADING */
+    .heading {}
+    .heading h1 {
+      text-align: center;
+      font-size: 30px;
+    }
+    .heading h1 span {
+      color: crimson;
+    }
+    .heading input[type=text] {
+      outline: none;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: none;
+      border-bottom: 2px solid #ddd;
+      background: white url(6-4_images/search-icon.png) no-repeat center left 5px;
+      background-size: 23px;
+      padding-left: 35px;
+    }
+    .heading input[type=text]::placeholder {
+      font-style: italic;
+      transition: 0.3s;
+    }
+    .heading input[type=text]:focus::placeholder {
+      opacity: 0;
+    }
+
+    .learning {
+      font-family: "Noto Sans", serif;
+      font-size: 18px;
+    }
+
+  </style>
+
+  <title>Tab menu</title>
+</head>
+<body>
+  <div class="learning">
+    <li>custom attribute: "data-alt" - 사용자 정의 속성</li>
+    <li>if same data-alt value, match them together</li>
+    <li>removeClass, addClass does not use '.'</li>
+    <li>background: white url(6-4_images/search-icon.png) no-repeat center left 5px;</li>
+    <li>background: COLOR IMG_PATH REPEAT? VERTICAL_ALIGN HORIZONTAL_ALIGN HORIZONTAL_ALIGN_AMOUNT</li>
+    <li>폼 요소 (input 등)은 click이 아니라 focus!</li>
+  
+    <h3>MAKE INVISIBLE</h3>
+    <ul>
+      <li style="list-style: inside">opacity: 0 -> 투명도가 0이라 보이진 않지만 크기값은 존재 * transition  X</li>
+      <li style="list-style: inside">display: none -> 아예 사라짐 * transition  X</li>
+      <li style="list-style: inside">visibility: invisible -> 사라지지만 크기는 유지 * transition  O</li>
+    </ul>
+    
+  </div>
+  <section>
+    <div class="heading">
+      <h1><span>Coding Works Lecture</span> - Languages</h1>
+      <input type="text" placeholder="What are you looking for?">
+    </div>
+
+    <div class="tab-inner">
+      <ul class="btn">
+        <li class="active" data-alt="tab1">HTML5</li>
+        <li data-alt="tab2">CSS</li>
+        <li data-alt="tab3">JQUERY</li>
+        <li data-alt="tab4">JAVASCRIPT</li>
+        <li data-alt="tab5">CSS FRAMEWORKS</li>
+      </ul>
+  
+      <div class="tabs">
+        <div class="active" id="tab1">
+          <h2>HTML5</h2>
+          <img src="6-4_images/platform-logo-01.png">
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque ab, quasi repudiandae, unde a assumenda deleniti alias beatae voluptatem dolore velit nisi, recusandae facere! Inventore doloremque et distinctio facere magnam non mollitia nobis reiciendis! Fuga nisi, suscipit voluptate consequatur exercitationem labore quia expedita asperiores nam cumque repellat ullam quasi eveniet eaque voluptas alias voluptatem beatae, id eum debitis, architecto minima commodi. Quod delectus assumenda eos repellendus enim beatae molestiae doloribus ducimus voluptates ratione magnam tenetur, atque ea ab sed minus saepe consequatur distinctio. Qui inventore ex, blanditiis amet perferendis quaerat! Facere natus perspiciatis odit temporibus repellat inventore doloremque tempore amet!</p>
+        </div>
+        <div id="tab2">
+          <h2>CSS</h2>
+          <img src="6-4_images/platform-logo-02.png">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis itaque aliquam minus dolorem repellat aliquid hic, modi fugit molestias animi, illum ullam perferendis obcaecati provident error ab laboriosam sit ea? Sequi molestias magnam vero vitae at, architecto corrupti reprehenderit dolores illum aliquid aspernatur error fuga officiis debitis dolor, iusto quasi dolore quibusdam minus veniam. Veniam ullam fugit facilis, incidunt consectetur perferendis molestiae deleniti voluptate tempore necessitatibus cupiditate quo optio dignissimos distinctio deserunt magni. Nostrum beatae corrupti quidem fugiat fugit voluptate obcaecati, vel aliquam! Quod dolores dolore velit, id temporibus earum assumenda suscipit. Dignissimos mollitia quod sapiente, aspernatur temporibus officia nesciunt!</p>
+        </div>
+        <div id="tab3">
+          <h2>JQuery</h2>
+          <img src="6-4_images/platform-logo-03.png">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis itaque aliquam minus dolorem repellat aliquid hic, modi fugit molestias animi, illum ullam perferendis obcaecati provident error ab laboriosam sit ea? Sequi molestias magnam vero vitae at, architecto corrupti reprehenderit dolores illum aliquid aspernatur error fuga officiis debitis dolor, iusto quasi dolore quibusdam minus veniam. Veniam ullam fugit facilis, incidunt consectetur perferendis molestiae deleniti voluptate tempore necessitatibus cupiditate quo optio dignissimos distinctio deserunt magni. Nostrum beatae corrupti quidem fugiat fugit voluptate obcaecati, vel aliquam! Quod dolores dolore velit, id temporibus earum assumenda suscipit. Dignissimos mollitia quod sapiente, aspernatur temporibus officia nesciunt!</p>
+        </div>
+        <div id="tab4">
+          <h2>JAVASCRIPT</h2>
+          <img src="6-4_images/platform-logo-04.png">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis itaque aliquam minus dolorem repellat aliquid hic, modi fugit molestias animi, illum ullam perferendis obcaecati provident error ab laboriosam sit ea? Sequi molestias magnam vero vitae at, architecto corrupti reprehenderit dolores illum aliquid aspernatur error fuga officiis debitis dolor, iusto quasi dolore quibusdam minus veniam. Veniam ullam fugit facilis, incidunt consectetur perferendis molestiae deleniti voluptate tempore necessitatibus cupiditate quo optio dignissimos distinctio deserunt magni. Nostrum beatae corrupti quidem fugiat fugit voluptate obcaecati, vel aliquam! Quod dolores dolore velit, id temporibus earum assumenda suscipit. Dignissimos mollitia quod sapiente, aspernatur temporibus officia nesciunt!</p>
+        </div>
+        <div id="tab5">
+          <h2>CSS FRAMEWORK</h2>
+          <img src="6-4_images/platform-logo-05.png">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis itaque aliquam minus dolorem repellat aliquid hic, modi fugit molestias animi, illum ullam perferendis obcaecati provident error ab laboriosam sit ea? Sequi molestias magnam vero vitae at, architecto corrupti reprehenderit dolores illum aliquid aspernatur error fuga officiis debitis dolor, iusto quasi dolore quibusdam minus veniam. Veniam ullam fugit facilis, incidunt consectetur perferendis molestiae deleniti voluptate tempore necessitatibus cupiditate quo optio dignissimos distinctio deserunt magni. Nostrum beatae corrupti quidem fugiat fugit voluptate obcaecati, vel aliquam! Quod dolores dolore velit, id temporibus earum assumenda suscipit. Dignissimos mollitia quod sapiente, aspernatur temporibus officia nesciunt!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    $('.btn li').click(function() {
+      $(this).addClass('active') // 5개 중 선택된 하나에 클래스 넣기
+      $(this).siblings().removeClass('active') // 선택된 하나 빼고 나머지 형제들은 모두 클랙스 삭제
+      //! siblings 중 다른게 하나라도 있다면 ()안에 형제들이 공통적으로 가지고 있는 태그나 클래스 이름 넣어주기
+
+      // tab을 눌렀을때 tab 내용을 가져오기 위해
+      // li가 눌렸을때 tabs의 div activate 하기
+      var tab = $(this).attr('data-alt');
+      $('.tabs div').removeClass('active'); // 먼저 기존 내용 div 삭제,
+      $('#' + tab).addClass('active'); // 그리고 클릭된 tab 내용 보여주기
+    });
+  </script>
+
+</body>
+</html> 

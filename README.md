@@ -19,3 +19,5 @@ This repository serves as a portfolio of the projects I built while following th
 1. Modern web development techniques
 2. Design implementation using **HTML** and **CSS**
 3. Applying responsive and accessible design principles
+
+### CSS, HTML, JS are all in the HTML file
