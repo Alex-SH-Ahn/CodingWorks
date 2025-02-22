@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lexend+Giga:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      font-family: "Noto Sans", serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+      background-color: #eee;
+    }
+    a {
+      text-decoration: none;
+      color: #222;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      font-weight: normal;
+      /* h tag default: bold*/
+    }
+
+    .item {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .item img {
+      transition: 0.5s;
+    }
+    .detail {
+      background-color: #f8f8f8;
+      position: absolute;
+      left: 0;
+      bottom: -204px;
+      width: 100%;
+      height: 60%;
+      /* html의 모든 요소는 position: absolute가 들어가면 display 속성이 inline-block으로 바뀜 -> width: 100% 필요 */
+      transition: 0.5s;
+
+      padding: 3px 20px;
+      box-sizing: border-box; /* 'bx' = box-sizing border-box */
+    }
+    .item:hover .detail {
+      bottom: 0;
+    }
+    .item:hover img {
+      filter: blur(2px);
+    }
+
+    .title {
+      border-bottom: 1px solid #ddd;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .title h2 {
+      font-size: 16px;
+      color: #888;
+      float: left;
+    }
+    .title h2 em {
+      font-style: normal;
+      display: block;
+      margin-bottom: 4px;
+      color: #000;
+    }
+    .title span {
+      float: right;
+      font-size: 18px;
+      color: crimson;
+      margin-top: 25px;
+    }
+
+    .info {
+      position: relative;
+    }
+
+    .size span,
+    .color span {
+      transition: 0.3s;
+    }
+
+    .size {
+      margin-bottom: 10px;
+    }
+    .size label, .color label {
+      display: block;
+      margin-bottom: 6px;
+    }
+    .size span {
+      font-size: 14px;
+      margin-right: 5px;
+      width: 18px;
+      height: 18px;
+      text-align: center;
+      display: inline-block;
+      line-height: 18px;
+      padding: 3px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .size span.active,
+    .size span:hover {
+      background-color: #000;
+      color: #fff;
+    }
+    .color span {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      margin-right: 6px;
+      padding: 3px;
+      cursor: pointer;
+    }
+    .color span:nth-of-type(1) {
+      background-color: crimson;
+    }
+    .color span:nth-of-type(2) {
+      background-color: orange;
+    }
+    .color span:nth-of-type(3) {
+      background-color: yellow;
+    }
+    .color span:nth-of-type(4) {
+      background-color: green;
+    }
+    .color span:nth-of-type(5) {
+      background-color: blue;
+    }
+    .color span.active,
+    .color span:hover {
+      border-radius: 50%;
+    }
+
+    .add-cart {
+      border: 1px solid #ddd;
+      width: 100%;
+      padding: 7px;
+      background-color: #fff;
+      cursor:pointer;
+      margin-top: 10px;
+
+      border-radius: 5px;
+    }
+    .add-cart:hover {
+      background-color: black;
+      color: #fff;
+    }
+
+    .like {
+      cursor:pointer;
+      transition: 0.3s ease-in-out;
+    }
+    .like:before {
+      content: '\f08a';
+      font-family: fontawesome;
+      color: #bbb;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .like.active:before {
+      content: '\f004';
+      color: crimson;
+    }
+  </style>
+
+  <title>Shopping Item Hover</title>
+</head>
+<body>
+  <div class="item">
+    <img src="6-6_images/model-female.png" alt="female model image">
+    <div class="detail">
+      <!-- position, <br> 은 꼭 필요할때만 -->
+      <div class="title">
+        <h2><em>Nightgown</em> Women's Designer Wear</h2>
+        <span>$55.99</span>
+      </div>
+      <div class="info">
+        <div class="size">
+          <label>Size</label>
+          <span>XS</span>
+          <span>S</span>
+          <span>M</span>
+          <span>L</span>
+          <span>XL</span>
+        </div>
+        <div class="color">
+          <label>Color</label>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span class="like"></span>
+      </div>
+      <button class="add-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <script>
+    $('.size span, .color span').click(function() {
+      $(this).addClass('active')
+      $(this).siblings().removeClass('active')
+    })
+    $('.like').click(function() {
+      $(this).toggleClass('active')
+    })
+  </script>
+
+</body>
+</html> 
