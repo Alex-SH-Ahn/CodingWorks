@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lexend+Giga:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      font-family: "Lexend Giga", serif;
+      margin: 0;
+    }
+    p, ul, li {
+      padding: 0;
+      margin: 0.2em;
+    }
+
+    .navi {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      z-index: 100;
+    }
+    .navi li {}
+    .navi li a {
+      font-size: 4em;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+    }
+    .navi li a:before {
+      position: absolute;
+      content: attr(data-text);
+      color: yellowgreen;
+      top: 0;
+      left: 0;
+      width: 0;
+      overflow: hidden; 
+      /* overflow: hidden은 필수로 사용해야지 바뀔 색상이 보이지 않음 */
+      /* before 글자는 현재 width: 0 보다 더 커서 보이는 상태 -> overflow hidden으로 숨겨주기 */
+      transition: 0.6s;
+    }
+    .navi li a:hover:before {
+      width: 100%;
+    }
+    .photo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: url(6-5_images/portrait-initial.jpg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      transition: 0.5s;
+    }
+  </style>
+
+  <title>Background Change</title>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="photo">
+      
+    </div>
+
+    <ul class="navi">
+      <li data-image="6-5_images/portrait-01.jpg"><a href="#none" data-text="ABOUT">ABOUT</a></li>
+      <li data-image="6-5_images/portrait-02.jpg"><a href="#none" data-text="INSTRUCTOR">INSTRUCTOR</a></li>
+      <li data-image="6-5_images/portrait-03.jpg"><a href="#none" data-text="CLASS">CLASS</a></li>
+      <li data-image="6-5_images/portrait-04.jpg"><a href="#none" data-text="LOCATION">LOCATION</a></li>
+    </ul>
+  </div>
+
+  <script>
+    $('.navi li').mouseenter(function() {
+      var changeImage = $(this).attr('data-image');
+      $('.photo').css({
+        'background-image' : 'url(' + changeImage + ')'
+      })
+    })
+    $('.navi li').mouseleave(function() {
+      var changeImage = $(this).attr('data-image');
+      $('.photo').css({
+        'background-image' : 'url(6-5_images/portrait-initial.jpg)'
+      })
+    })
+  </script>
+
+</body>
+</html> 
